@@ -1,7 +1,7 @@
 // commands/economy/evlilik.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const RING_PRICE = 5000;
 
