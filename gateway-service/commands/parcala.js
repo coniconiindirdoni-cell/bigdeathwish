@@ -1,7 +1,7 @@
 // commands/games/blackjack.js — basitleştirilmiş tek-round blackjack (kart çizimi otomatik, 17'de durur).
 const { SlashCommandBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const BJ_MAX_DAILY = 8;
 
