@@ -1,7 +1,7 @@
 // commands/economy/evlen.js
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { friendlyError, safeExecute } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { friendlyError, safeExecute } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
