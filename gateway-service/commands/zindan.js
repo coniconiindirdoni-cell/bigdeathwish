@@ -1,7 +1,7 @@
 // commands/rpg/yukselt.js — ekipman güçlendirme (+0..+10)
 const { SlashCommandBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
