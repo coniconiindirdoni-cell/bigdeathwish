@@ -1,6 +1,6 @@
 // commands/misc/yardim.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { safeExecute } = require('../../lib/safe-execute');
+const { safeExecute } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder().setName('yardim').setDescription('Komut listesini gösterir'),
