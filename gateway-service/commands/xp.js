@@ -1,7 +1,7 @@
 // commands/user/hakkimda.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { user, gameCore, economy } = require('../../lib/service-clients');
-const { safeExecute } = require('../../lib/safe-execute');
+const { user, gameCore, economy } = require('../lib/service-clients');
+const { safeExecute } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
