@@ -1,7 +1,7 @@
 // commands/games/atyarisi.js — 4 atlı basit yarış, oranlar eşit (%25 kazanma şansı, x3.5 ödeme).
 const { SlashCommandBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const HORSES = ['🐎 Yıldırım', '🐎 Kasırga', '🐎 Gölge', '🐎 Şimşek'];
 const PAYOUT_MULTIPLIER = 3.5;
