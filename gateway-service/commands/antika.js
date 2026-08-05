@@ -1,6 +1,6 @@
 // commands/rpg/yumurta.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { gameCore } = const { gameCore } = require('../lib/service-clients');
+const { gameCore } = require('../lib/service-clients');
 const { safeExecute, friendlyError } = require('../../lib/safe-execute');
 
 const EGG_CHOICES = [
