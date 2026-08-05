@@ -1,0 +1,64 @@
+// modules/shared/bonuses.js
+//
+// Madencilik, odunculuk ve balıkçılık modülleri relic/pet/antika/alet
+// bonuslarından etkileniyor. Bu dosya o hesaplamalar için TEK ortak giriş
+// noktası — gerçek mantık artık modules/pets-relics-antiques/service.js'te.
+//
+// KISMİ DURUM: MMORPG relic setleri (RELIC_SETS) ve mmo_pets henüz
+// taşınmadı ("mmo-equipment" / "dungeon-fight" modülleri). O sistemlere ait
+// ek bonuslar (getRelicSetWoodBonus, getRelicSetFishBonusPct) şimdilik 0
+// döner — bu klasik pet/relik/antika bonuslarını ETKİLEMEZ, sadece MMORPG
+// relic seti katkısı henüz dahil değil.
+
+const petRelicAntique = require('../pets-relics-antiques/service');
+
+/** Pasif XP bonus yüzdesi (antika + pet + klasik relik + Ejder Seti toplamı). */
+async function getPassiveXpBonusPct(guildId, userId) {
+  return petRelicAntique.getPassiveXpBonusPct(guildId, userId);
+}
+
+/** En iyi madencilik aletinin sağladığı satış bonus yüzdesi (%30 nerf uygulanmış). */
+async function getBestMiningToolBonus(guildId, userId) {
+  return petRelicAntique.getBestMiningToolBonus(guildId, userId);
+}
+
+/** Madenci Reliği satış bonus yüzdesi. */
+async function getRelicSetMineBonus(guildId, userId) {
+  return petRelicAntique.getRelicMineBonus(guildId, userId);
+}
+
+/** En iyi odunculuk aletinin bonus yüzdesi. */
+async function getBestWoodToolBonus(guildId, userId) {
+  return petRelicAntique.getBestWoodToolBonus(guildId, userId);
+}
+
+/** TODO(mmo-equipment modülü): Güneş Seti odunculuk bonusu. Şimdilik 0. */
+async function getRelicSetWoodBonus(_guildId, _userId) {
+  return 0;
+}
+
+/** Deniz Reliği — nadir balık ağırlık çarpanı (1.0 = etkisiz). */
+async function getRelicDenizFishMultiplier(guildId, userId) {
+  return petRelicAntique.getRelicDenizFishMultiplier(guildId, userId);
+}
+
+/** Tüccar Reliği — balık satış bonus yüzdesi. */
+async function getRelicFishBonusPct(guildId, userId) {
+  return petRelicAntique.getRelicFishBonus(guildId, userId);
+}
+
+/** TODO(mmo-equipment modülü): Güneş Seti balık satış bonusu. Şimdilik 0. */
+async function getRelicSetFishBonusPct(_guildId, _userId) {
+  return 0;
+}
+
+module.exports = {
+  getPassiveXpBonusPct,
+  getBestMiningToolBonus,
+  getRelicSetMineBonus,
+  getBestWoodToolBonus,
+  getRelicSetWoodBonus,
+  getRelicDenizFishMultiplier,
+  getRelicFishBonusPct,
+  getRelicSetFishBonusPct,
+};
