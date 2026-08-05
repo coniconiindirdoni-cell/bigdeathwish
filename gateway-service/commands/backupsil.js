@@ -1,7 +1,7 @@
 // commands/user/siralama.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { user, economy, voice } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { user, economy, voice } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
