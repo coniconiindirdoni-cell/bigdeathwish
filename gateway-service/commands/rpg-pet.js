@@ -1,7 +1,7 @@
 // commands/games/zar.js
 const { SlashCommandBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const lossStreak = new Map();
 
