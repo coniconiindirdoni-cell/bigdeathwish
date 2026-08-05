@@ -1,7 +1,7 @@
 // commands/games/xpboost.js
 const { SlashCommandBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder().setName('xpboost').setDescription('Kalıcı 1.5x XP Boost satın al (4000 coin)'),
