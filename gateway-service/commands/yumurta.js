@@ -1,7 +1,7 @@
 // commands/rpg/envanter.js — birden fazla mmo-equipment endpoint'ini birleştirir.
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder().setName('envanter').setDescription('Tüm MMO eşyalarını gösterir (silah/zırh/malzeme)'),
