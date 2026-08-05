@@ -1,8 +1,8 @@
 // commands/games/cal.js — /çal (hırsızlık). Discord slash komut adları
 // Unicode karakter destekler; dosya adı ASCII (cal.js) ama komut adı 'çal'.
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 // Aynı anda yalnızca 1 aktif hırsızlık girişimi (process-local).
 const activeSteals = new Set();
