@@ -5,7 +5,7 @@ const madenciCmd = require('../commands/madenci');
 const oduncuCmd = require('../commands/oduncu');
 const evlenCmd = require('../commands/evlen');
 const petCmd = require('../commands/pet');
-const gelistirCmd = require('../commandsgelistir');
+const gelistirCmd = require('../commands/gelistir');
 
 module.exports = {
   name: 'interactionCreate',
