@@ -1,7 +1,7 @@
 // commands/rpg/yumurta.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { gameCore } = require('../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const EGG_CHOICES = [
   { name: '🥚 Sıradan', value: 'siradan' }, { name: '🥈 Nadir', value: 'nadir' }, { name: '🥇 Altın', value: 'altin' },
