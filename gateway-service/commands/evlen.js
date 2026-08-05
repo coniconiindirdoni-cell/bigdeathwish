@@ -1,7 +1,7 @@
 // commands/economy/setup.js
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
