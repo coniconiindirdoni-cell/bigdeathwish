@@ -1,7 +1,7 @@
 // commands/rpg/rpg.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
