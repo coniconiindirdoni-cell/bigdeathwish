@@ -1,7 +1,7 @@
 // commands/rpg/craft.js — silah ve zırh craft (yumurta/sandik zaten ayrı komutlarda; malzeme/set kapsam dışı, bkz. not).
 const { SlashCommandBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
