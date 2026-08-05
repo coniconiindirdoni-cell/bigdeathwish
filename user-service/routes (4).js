@@ -1,0 +1,1 @@
+const express=require('express'); const r=express.Router(); r.all('*',(_q,res)=>res.status(501).json({ok:false,error:'Bu modül gönderilen kaynak ZIP içinde eksikti; merkezi altyapı hazır ancak orijinal modül kodu gerekli.'})); module.exports=r;
