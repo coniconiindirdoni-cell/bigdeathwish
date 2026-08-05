@@ -3,7 +3,7 @@ const { gameCore } = require('../lib/service-clients');
 const { logError } = require('../lib/logger-client');
 const madenciCmd = require('../commands/madenci');
 const oduncuCmd = require('../commands/oduncu');
-const evlenCmd = require('../commands/economy/evlen');
+const evlenCmd = require('../commands/evlen');
 const petCmd = require('../commands/pet');
 const gelistirCmd = require('../commands/gelistir');
 
