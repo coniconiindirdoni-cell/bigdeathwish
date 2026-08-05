@@ -1,7 +1,7 @@
 // commands/game/pet.js
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder().setName('pet').setDescription('Petlerini gösterir ve aktif peti seçmeni sağlar'),
