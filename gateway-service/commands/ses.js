@@ -1,7 +1,7 @@
 // commands/admin/xp.js
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const { user } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { user } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
