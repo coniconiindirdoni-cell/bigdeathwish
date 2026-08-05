@@ -1,7 +1,7 @@
 // commands/games/oyunlar.js — Şans kutusu (80 coin, günlük 5 hak).
 const { SlashCommandBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const BOX_PRICE = 80;
 const BOX_DAILY_LIMIT = 5;
