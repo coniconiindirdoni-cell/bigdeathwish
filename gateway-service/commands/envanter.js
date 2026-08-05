@@ -1,8 +1,8 @@
 // commands/games/yazioyunu.js — Yazı yazma yarışı: bot bir cümle gösterir, ilk
 // doğru yazan kazanır. awaitMessages kullanır, messageCreate.js'e dokunmaz.
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const SENTENCES = [
   'Deathwish Game Bot mikroservis mimarisiyle çalışır',
