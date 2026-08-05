@@ -1,7 +1,7 @@
 // commands/rpg/stat.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { gameCore } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { gameCore } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 const STAT_CHOICES = [
   { name: '❤️ Can', value: 'hp' }, { name: '⚔️ Güç', value: 'attack' }, { name: '🛡️ Savunma', value: 'defense' },
