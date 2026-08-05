@@ -4,8 +4,8 @@
 // belirtiyor) — bu komut coin transferini eksiksiz yapar, eşya teslimatı manuel/
 // takip gerektirir. Bkz. mimari notları.
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
