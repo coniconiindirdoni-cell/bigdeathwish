@@ -1,0 +1,61 @@
+// modules/warnings/service.js
+const pool = require('../../db/pool');
+
+// Kademeli ceza sistemi: uyarı sayısına göre önerilen aksiyon.
+// Gerçek Discord aksiyonunu (mute/kick/ban) SADECE gateway-service uygular -
+// bu servis sadece "ne yapılması gerektiğini" önerir.
+const ESCALATION_THRESHOLDS = [
+  { count: 3, action: 'mute', durationMs: 10 * 60 * 1000 },
+  { count: 5, action: 'mute', durationMs: 60 * 60 * 1000 },
+  { count: 7, action: 'kick' },
+  { count: 10, action: 'ban' },
+];
+
+function getSuggestedAction(count) {
+  let suggestion = { action: 'warn' };
+  for (const tier of ESCALATION_THRESHOLDS) {
+    if (count >= tier.count) suggestion = tier;
+  }
+  return suggestion;
+}
+
+async function logAction(guildId, userId, actionType, reason, moderatorId = null) {
+  await pool.query(
+    `INSERT INTO moderation_logs (guild_id, user_id, action_type, reason, moderator_id) VALUES ($1,$2,$3,$4,$5)`,
+    [guildId, userId, actionType, reason, moderatorId]
+  );
+}
+
+async function getWarningCount(guildId, userId) {
+  const { rows } = await pool.query('SELECT count FROM moderation_warnings WHERE guild_id=$1 AND user_id=$2', [guildId, userId]);
+  return rows.length ? rows[0].count : 0;
+}
+
+async function addWarning(guildId, userId, reason, moderatorId = null) {
+  await pool.query(
+    `INSERT INTO moderation_warnings (guild_id, user_id, count) VALUES ($1,$2,1)
+     ON CONFLICT (guild_id, user_id) DO UPDATE SET count = moderation_warnings.count + 1`,
+    [guildId, userId]
+  );
+  const count = await getWarningCount(guildId, userId);
+  await logAction(guildId, userId, 'warn', reason || 'Sebep belirtilmedi', moderatorId);
+  return { count, suggestedAction: getSuggestedAction(count) };
+}
+
+async function resetWarnings(guildId, userId) {
+  await pool.query('DELETE FROM moderation_warnings WHERE guild_id=$1 AND user_id=$2', [guildId, userId]);
+}
+
+async function getLogs(guildId, userId, limit = 20) {
+  const params = [guildId];
+  let where = 'guild_id=$1';
+  if (userId) { params.push(userId); where += ` AND user_id=$${params.length}`; }
+  params.push(limit);
+  const { rows } = await pool.query(
+    `SELECT * FROM moderation_logs WHERE ${where} ORDER BY created_at DESC LIMIT $${params.length}`,
+    params
+  );
+  return rows;
+}
+
+module.exports = { logAction, getWarningCount, addWarning, resetWarnings, getLogs, getSuggestedAction };
