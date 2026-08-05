@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, GatewayIntentBits, Collection, Partials } = require('discord.js');
-const { logInfo, logCritical } = require('./lib/logger-client');
+const { logInfo, logCritical } = require('./logger-client')
 const { waitUntilReady, isReady, startThirtyMinuteSync } = require('./lib/service-client');
 const express = require('express');
 
