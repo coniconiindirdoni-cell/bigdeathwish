@@ -1,7 +1,7 @@
 // commands/economy/market-yonet.js
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const { economy } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { economy } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
