@@ -1,6 +1,6 @@
 // commands/admin/backupsil.js
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const { safeExecute } = require('../../lib/safe-execute');
+const { safeExecute } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
