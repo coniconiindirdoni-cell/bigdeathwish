@@ -1,61 +1,62 @@
 // deploy-commands.js
-//
-// Slash komutlarını Discord'a global olarak kaydeder.
-// Deploy sonrası bir kez çalıştır:
-// node deploy-commands.js
 
-const fs = require('fs');
-const path = require('path');
-const { REST, Routes } = require('discord.js');
+const fs = require("fs");
+const path = require("path");
+const { REST, Routes } = require("discord.js");
 
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN || '';
-const CLIENT_ID = process.env.CLIENT_ID || '';
+const TOKEN = process.env.DISCORD_TOKEN;
+const CLIENT_ID = process.env.CLIENT_ID;
 
-if (!DISCORD_TOKEN || !CLIENT_ID) {
-  console.error('⛔ DISCORD_TOKEN ve CLIENT_ID gerekli.');
-  process.exit(1);
+if (!TOKEN) {
+    console.error("❌ DISCORD_TOKEN bulunamadı.");
+    process.exit(1);
 }
 
-function loadCommandData(dir) {
-  const result = [];
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      result.push(...loadCommandData(full));
-      continue;
-    }
-
-    if (!entry.name.endsWith('.js')) continue;
-
-    const command = require(full);
-
-    if (command?.data) {
-      result.push(command.data.toJSON());
-    }
-  }
-
-  return result;
+if (!CLIENT_ID) {
+    console.error("❌ CLIENT_ID bulunamadı.");
+    process.exit(1);
 }
 
-const commands = loadCommandData(path.join(__dirname, 'commands'));
-const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
+const commands = [];
+
+function loadCommands(dir) {
+    const files = fs.readdirSync(dir);
+
+    for (const file of files) {
+        const filePath = path.join(dir, file);
+
+        if (fs.statSync(filePath).isDirectory()) {
+            loadCommands(filePath);
+            continue;
+        }
+
+        if (!file.endsWith(".js")) continue;
+
+        const command = require(filePath);
+
+        if (command.data) {
+            commands.push(command.data.toJSON());
+        }
+    }
+}
+
+loadCommands(path.join(__dirname, "commands"));
+
+const rest = new REST({ version: "10" }).setToken(TOKEN);
 
 (async () => {
-  try {
-    console.log(`🔄 ${commands.length} komut global olarak kaydediliyor...`);
+    try {
+        console.log(`🚀 ${commands.length} komut yükleniyor...`);
 
-    await rest.put(
-      Routes.applicationCommands(CLIENT_ID),
-      { body: commands }
-    );
+        await rest.put(
+            Routes.applicationCommands(CLIENT_ID),
+            {
+                body: commands,
+            }
+        );
 
-    console.log(`✅ ${commands.length} komut başarıyla global olarak kaydedildi.`);
-    console.log('ℹ️ Discord\'un komutları tüm sunuculara yayması birkaç dakika ile 1 saat arasında sürebilir.');
-  } catch (err) {
-    console.error('⛔ Komut kaydı başarısız:', err);
-    process.exit(1);
-  }
-})();
+        console.log("✅ Komutlar başarıyla yüklendi.");
+    } catch (err) {
+        console.error(err);
+    }
 })();
