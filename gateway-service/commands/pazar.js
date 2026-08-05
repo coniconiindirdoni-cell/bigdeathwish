@@ -1,7 +1,7 @@
 // commands/admin/ses.js
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const { voice } = require('../../lib/service-clients');
-const { safeExecute, friendlyError } = require('../../lib/safe-execute');
+const { voice } = require('../lib/service-clients');
+const { safeExecute, friendlyError } = require('../lib/safe-execute');
 
 module.exports = {
   data: new SlashCommandBuilder()
