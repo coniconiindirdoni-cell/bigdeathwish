@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { Client, GatewayIntentBits, Collection, Partials } = require('discord.js');
 const { logInfo, logCritical } = require('./logger-client')
-const { waitUntilReady, isReady, startThirtyMinuteSync } = require('./lib/service-client');
+const { waitUntilReady, isReady, startThirtyMinuteSync } = require('./logger-client');
 const express = require('express');
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN || '';
