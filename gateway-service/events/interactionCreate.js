@@ -1,11 +1,11 @@
 // events/interactionCreate.js
 const { gameCore } = require('../lib/service-clients');
 const { logError } = require('../lib/logger-client');
-const madenciCmd = require('../commands/game/madenci');
-const oduncuCmd = require('../commands/game/oduncu');
-const evlenCmd = require('../commands/economy/evlen');
-const petCmd = require('../commands/game/pet');
-const gelistirCmd = require('../commands/game/gelistir');
+const madenciCmd = require('../commands/madenci');
+const oduncuCmd = require('../commands/oduncu');
+const evlenCmd = require('../commands/evlen');
+const petCmd = require('../commands/pet');
+const gelistirCmd = require('../commandsgelistir');
 
 module.exports = {
   name: 'interactionCreate',
